@@ -1,5 +1,6 @@
 const express = require('express');
-const routerApi = require('./src/Routs');
+const morgan = require('morgan');
+const routerApi = require('./Routs');
 
 const app = express();
 
@@ -10,5 +11,6 @@ app.get('/', (req, res) => {
 }).listen(PORT, () => console.log('listen to port 3000'));
 
 app.use(express.json());
+app.use(morgan('dev'));
 
 routerApi(app);
