@@ -7,17 +7,19 @@ class Pokemon {
   }
 
   async generate() {
-    for (let i = 1; i < 50; i += 1) {
+    for (let i = 1; i < 550; i += 1) {
       axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
         .then((response) => {
+          const stock = 5;
           const objPokes = {
+            idPoke: response.data.id,
             pokeName: response.data.name,
-            pokeImg: response.data.sprites.other['official-artwork'].front_default,
             pokeHp: response.data.stats[0].base_stat,
             attkPoke: response.data.stats[1].base_stat,
-            typePoke: response.data.types.map((e) => e.type.name),
-            idPoke: response.data.id,
+            stock,
             defensePoke: response.data.stats[2].base_stat,
+            typePoke: response.data.types.map((e) => e.type.name),
+            pokeImg: response.data.sprites.other['official-artwork'].front_default,
           };
           this.pokemons.push(objPokes);
         });
@@ -29,7 +31,7 @@ class Pokemon {
   }
 
   getPokemonByName(name) {
-    const pokemon = this.pokemons.map((p) => p.name === name);
+    const pokemon = this.pokemons.filter((p) => p.pokeName.includes(name));
     if (!pokemon) return 'pokemon no found';
     return pokemon;
   }
