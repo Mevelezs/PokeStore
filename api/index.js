@@ -14,7 +14,6 @@ const PORT = 3000;
 app.get('/', (req, res) => {
   res.send('My app');
 }).listen(PORT, () => console.log('listen to port 3000'));
-
 app.use(cors(corsOptions));
 
 routerApi(app);

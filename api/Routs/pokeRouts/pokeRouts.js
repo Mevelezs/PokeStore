@@ -23,14 +23,16 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    if (id > 0) {
-      const poke = await service.getPokemonById(id);
-      res.status(200).json(poke);
-    }
-    res.status(404).send('pokemon not found');
+    const poke = await service.getPokemonById(id);
+    res.status(200).json(poke);
   } catch (error) {
     console.log(error);
   }
 });
 
+router.post('/', async (req, res) => {
+  const data = req.body;
+  await service.createPokemon(data);
+  res.send(data);
+});
 module.exports = router;

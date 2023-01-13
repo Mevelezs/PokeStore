@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { models } = require('../libs/sequelize');
 
 class Pokemon {
   constructor() {
@@ -7,26 +8,28 @@ class Pokemon {
   }
 
   async generate() {
-    for (let i = 1; i < 550; i += 1) {
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+    for (let i = 1; i < 400; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
         .then((response) => {
           const stock = 5;
           const objPokes = {
-            idPoke: response.data.id,
-            pokeName: response.data.name,
-            pokeHp: response.data.stats[0].base_stat,
-            attkPoke: response.data.stats[1].base_stat,
+            id: response.data.id,
+            name: response.data.name,
+            hp: response.data.stats[0].base_stat,
+            attack: response.data.stats[1].base_stat,
             stock,
-            defensePoke: response.data.stats[2].base_stat,
-            typePoke: response.data.types.map((e) => e.type.name),
-            pokeImg: response.data.sprites.other['official-artwork'].front_default,
+            defense: response.data.stats[2].base_stat,
+            // type: response.data.types.map((e) => e.type.name),
+            image: response.data.sprites.other['official-artwork'].front_default,
           };
           this.pokemons.push(objPokes);
         });
     }
+    await models.Pokemons.bulkCreate(this.pokemons);
   }
 
-  getAllPokemon() {
+  async getAllPokemon() {
     return this.pokemons;
   }
 
@@ -36,8 +39,9 @@ class Pokemon {
     return pokemon;
   }
 
-  getPokemonById(id) {
-    const pokemon = this.pokemon.find((p) => p.id === id);
+  async getPokemonById(id) {
+    const pokemon = this.pokemons.filter((p) => p.id.toString() === id);
+    console.log(pokemon);
     if (!pokemon) return ({ message: 'pokemon not found' });
     console.log(pokemon);
     return pokemon;
