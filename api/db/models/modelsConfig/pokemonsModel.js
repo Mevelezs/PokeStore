@@ -7,24 +7,17 @@ const PokemonSchema = {
     type: DataTypes.INTEGER,
     allownull: false,
     primaryKey: true,
+    autoIncrement: true,
   },
   name: {
     type: DataTypes.STRING,
     allownull: false,
   },
-  hp: {
+  height: {
     type: DataTypes.INTEGER,
     allownull: false,
   },
-  attack: {
-    type: DataTypes.INTEGER,
-    allownull: false,
-  },
-  stock: {
-    type: DataTypes.INTEGER,
-    allownull: false,
-  },
-  defense: {
+  weight: {
     type: DataTypes.INTEGER,
     allownull: false,
   },
@@ -32,10 +25,8 @@ const PokemonSchema = {
     type: DataTypes.STRING,
     allownull: true,
   },
-  createdInDb: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-    field: 'create_in_db',
+  url: {
+    type: DataTypes.STRING,
   },
   createAt: {
     field: 'crete_at',

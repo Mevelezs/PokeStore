@@ -35,4 +35,14 @@ router.post('/', async (req, res) => {
   await service.createPokemon(data);
   res.send(data);
 });
+
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { body } = req;
+  try {
+    const data = await service.updatePokemon(parseInt(id, 10), body);
+    res.send(data);
+  } catch (error) { console.log(error); }
+});
+
 module.exports = router;
