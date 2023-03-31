@@ -1,0 +1,49 @@
+.mainDetail{
+  background-color: rgba(0, 0, 0, 0.418);
+  border: 4mm ridge rgba(70, 71, 54, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 450px;
+}
+.mainDetail h3{
+  font-size:larger;
+  font: bold;
+  color: black;
+  margin-bottom: 0;
+}
+.mainDetail button{
+  width: 10px;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(2, 2, 2, 0.418);
+  border: 1px solid rgba(118, 106, 189, 0.623);
+  margin: 0;
+}
+.buttonDetail button > img{
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    margin-bottom: 0;
+}
+.mainDetail img{
+  height: 300px;
+  width: 300px;
+  margin-bottom: 16px;
+  margin-top: 4;
+}
+.details p, a{
+  margin: 0;
+  font: bold;
+  color: rgb(46, 14, 14);
+  margin-bottom: 12px;
+}
+.details{
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}

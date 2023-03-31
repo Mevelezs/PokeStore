@@ -1,30 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './cart.css'
-import { useNavigate } from 'react-router-dom'
+import { CartContext } from '../../context/useContext'
 
-
-const usePoke = () => {
-  const navigate = useNavigate()
-
-  async function getPokeId(id) {
-    const detail = await fetch(`http://localhost:3000/api/v1/pokemons/${id}`)
-      .then(res => res.json())
-      .then(data => data);
-    return detail
-  }
-  const handleNavigate = (id) => {
-    navigate(`/detail/${id}`)
-  }
-  return {
-    handleNavigate,
-    getPokeId,
-  }
-}
 
 function Cart({ id, name, image, url }) {
-
-  const { handleNavigate } = usePoke();
-  
+  const { getFavorites, handleNavigate } = useContext(CartContext)
   return (
     <article className='cart'>
       <li>
@@ -34,12 +14,15 @@ function Cart({ id, name, image, url }) {
           <img src={image} alt={name} />
         </div>
         <div className='parrafo'>
-          <p>Url: {url}</p>
+          <a href={`detail/${id}`}> Url: {url}</a>
         </div>
+        <div className='buttons'>
         <button onClick={() => { handleNavigate(id) }}>Detail</button>
+          <button onClick={() => { getFavorites(id) }}>+</button>
+        </div>
       </li>
     </article>
   )
 }
 
-export { Cart, usePoke }
+export { Cart }

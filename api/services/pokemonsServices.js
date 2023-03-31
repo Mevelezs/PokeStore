@@ -9,7 +9,7 @@ class Pokemon {
   }
 
   async generate() {
-    for (let i = 1; i < 40; i += 1) {
+    for (let i = 1; i < 100; i += 1) {
       // eslint-disable-next-line no-await-in-loop
       await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
         .then((response) => {

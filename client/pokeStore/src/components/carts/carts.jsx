@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { Cart } from '../cart/cart';
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { CartContext } from '../../context/useContext'
+import {Cart} from '../cart/cart'
 import './carts.css'
 
 function Carts() {
-  const [state, setState] = useState()
-  async function getpokemons() {
-    fetch('http://localhost:3000/api/v1/pokemons')
-      .then(res => res.json())
-      .then(data => setState(data))
-  }
 
-  useEffect(() => {
-    getpokemons()
-  }, [])
+  const { state } = useContext(CartContext)
+  
   return (
     <main className='carts'>
-      <div>carts</div>
+      <Link to='/favorites'><h3>Favorites</h3></Link>
         <ul>
           {
             state?.map(poke =>
