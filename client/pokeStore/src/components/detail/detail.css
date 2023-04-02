@@ -14,7 +14,7 @@
   color: black;
   margin-bottom: 0;
 }
-.mainDetail button{
+.button-check{
   width: 10px;
   height: 10px;
   display: flex;
@@ -24,6 +24,17 @@
   border: 1px solid rgba(118, 106, 189, 0.623);
   margin: 0;
 }
+.button-uncheck
+{
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(2 2 2 / 0%);
+    border: 1px solid rgba(22, 19, 235, 0.623);
+    margin: 0;
+  }
 .buttonDetail button > img{
     width: 16px;
     height: 16px;

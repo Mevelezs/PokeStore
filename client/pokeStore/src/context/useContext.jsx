@@ -7,10 +7,11 @@ const CartPovider = ({ children }) => {
   const [state, setState] = useState()
   const [favoritePokes, setFavoritePokes] = useState([])
    
-  function getpokemons() {
-    fetch('http://localhost:3000/api/v1/pokemons')
+  async function getpokemons() {
+    const data = await fetch('http://localhost:3000/api/v1/pokemons')
       .then(res => res.json())
       .then(data => setState(data))
+    return data;
   }
 
 
@@ -27,16 +28,26 @@ const CartPovider = ({ children }) => {
   const getFavorites = async (id) => {
     const productsInCart = state.find(item => item.id === id);
     const validate = [...favoritePokes]
-    console.log(validate)
     if (validate.includes(productsInCart)) {
       return;
     }
     const copyFavorites = [...favoritePokes, productsInCart];
-    setFavoritePokes(copyFavorites)
+    setFavoritePokes(copyFavorites);
     return;
     
   }
 
+  const deleteToFavarite = (id )  => {
+    const copyFavorites = structuredClone(favoritePokes)
+    const newFavorites = copyFavorites.filter(poke => poke.id !== id);
+    setFavoritePokes(newFavorites);
+    return;
+  }
+
+  const checkFavorite = (poke) => {
+    return favoritePokes.some(item => item.id === poke.id)
+  }
+  
   useEffect(() => {
     getpokemons()
   }, [])
@@ -48,6 +59,8 @@ const CartPovider = ({ children }) => {
       favoritePokes,
       handleNavigate,
       getPokeId,
+      deleteToFavarite,
+      checkFavorite,
     }}
     >
       {children}

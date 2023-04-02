@@ -3,8 +3,8 @@ import './cart.css'
 import { CartContext } from '../../context/useContext'
 
 
-function Cart({ id, name, image, url }) {
-  const { getFavorites, handleNavigate } = useContext(CartContext)
+function Cart({ id, name, image, url, isInFavorite }) {
+  const { getFavorites, handleNavigate, deleteToFavarite } = useContext(CartContext)
   return (
     <article className='cart'>
       <li>
@@ -17,8 +17,8 @@ function Cart({ id, name, image, url }) {
           <a href={`detail/${id}`}> Url: {url}</a>
         </div>
         <div className='buttons'>
-        <button onClick={() => { handleNavigate(id) }}>Detail</button>
-          <button onClick={() => { getFavorites(id) }}>+</button>
+          <button onClick={() => { handleNavigate(id) }}>Detail</button>
+          <button style={{ backgroundColor: isInFavorite ? '#f5505073' : '#535bf2'}} onClick={() => isInFavorite ? deleteToFavarite(id) : getFavorites(id) } >+</button>
         </div>
       </li>
     </article>
