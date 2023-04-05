@@ -1,11 +1,21 @@
-function CartItem({ name, image }) {
+import { useNavigate } from "react-router-dom";
+import './favorite.css'
+
+function Favorite({ id, name, image, deleteToFavarite }) {
+
+  const navigate = useNavigate()
+
+  const handleNavigate = () => {
+    navigate('/')
+  }
   return(
-  <article>
+    <article className="favorite-container">
     <li>
-        <strong>Name: {name}</strong>
+        <strong>{name}</strong>
         <img src={image}></img>
+        <button onClick={() => deleteToFavarite(id)}>X</button>
     </li>
   </article>)
 }
 
-export { CartItem };
+export { Favorite };

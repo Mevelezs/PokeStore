@@ -1,0 +1,32 @@
+.favorite-container li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(77, 153, 77, 0.281);
+  margin: 0 4px 12px 0;
+  background-color: rgba(0, 0, 0, 0.938);
+  border-radius: 8px;
+  color: rgb(18, 230, 230);
+}
+.favorite-container img{
+   height: 150px;
+   width: 150px;
+   margin-bottom: 8px;
+   border-radius: 8px;
+   background-color: #7390ee57;
+}
+.favorite-container strong{
+  margin: 8px 0 8px 0;
+}
+
+.favorite-container button{
+  background-color:rgba(245, 80, 80, 0.45);
+  color :black;
+  margin-bottom: 8px;
+  height: 8px;
+  width: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

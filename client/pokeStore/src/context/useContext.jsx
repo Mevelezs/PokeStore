@@ -47,6 +47,11 @@ const CartPovider = ({ children }) => {
   const checkFavorite = (poke) => {
     return favoritePokes.some(item => item.id === poke.id)
   }
+
+  const handleResetFavorites = () => {
+    setFavoritePokes([])
+    return;
+  }
   
   useEffect(() => {
     getpokemons()
@@ -61,6 +66,7 @@ const CartPovider = ({ children }) => {
       getPokeId,
       deleteToFavarite,
       checkFavorite,
+      handleResetFavorites,
     }}
     >
       {children}

@@ -6,7 +6,7 @@ import './carts.css'
 
 function Carts() {
 
-  const { state, checkFavorite} = useContext(CartContext)
+  const { state, checkFavorite } = useContext(CartContext)
 
   return (
     <main className='carts'>

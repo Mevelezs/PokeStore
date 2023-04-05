@@ -8,9 +8,9 @@ function App() {
   return (
     <main className='mainApp'>
       <h1>Poke Store</h1>
+        <Favorites />
         <Routes>
           <Route path='/' element={<Carts />} /> 
-          <Route path='/favorites' element={ <Favorites /> } />
           <Route path='detail/:id' element={<Detail />} /> 
       </Routes>
     </main >
