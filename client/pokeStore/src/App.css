@@ -1,7 +1,6 @@
 #root {
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 .mainApp{
@@ -11,3 +10,9 @@
   align-items:  center;
 }
 
+.mainApp h1 {
+  font-size: x-large;
+  font-family: serif;
+  border-bottom: 1px solid rgb(182, 21, 21);
+  color: rgba(0, 0, 0, 0.466);
+}

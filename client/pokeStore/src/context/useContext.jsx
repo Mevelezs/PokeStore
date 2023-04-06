@@ -6,7 +6,8 @@ const CartPovider = ({ children }) => {
   const navigate = useNavigate();
   const [state, setState] = useState()
   const [favoritePokes, setFavoritePokes] = useState([])
-   
+  const [showFavoritesContainer, setShowFavoritesContainer] = useState(false)
+  
   async function getpokemons() {
     const data = await fetch('http://localhost:3000/api/v1/pokemons')
       .then(res => res.json())
@@ -52,6 +53,11 @@ const CartPovider = ({ children }) => {
     setFavoritePokes([])
     return;
   }
+
+
+  const showFavorites = () => {
+    setShowFavoritesContainer(!showFavoritesContainer)
+  }
   
   useEffect(() => {
     getpokemons()
@@ -67,6 +73,8 @@ const CartPovider = ({ children }) => {
       deleteToFavarite,
       checkFavorite,
       handleResetFavorites,
+      showFavoritesContainer,
+      showFavorites
     }}
     >
       {children}

@@ -1,16 +1,22 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
 import { CartContext } from '../../context/useContext'
 import { Cart } from '../cart/cart'
+import { Favorites } from '../favorites/Favorites'
 import './carts.css'
 
 function Carts() {
 
-  const { state, checkFavorite } = useContext(CartContext)
+  const { state, checkFavorite, showFavorites, showFavoritesContainer } = useContext(CartContext);
 
   return (
     <main className='carts'>
-      <Link to='/favorites'><h3>Favorites</h3></Link>
+      <button
+        className={showFavoritesContainer ? 'button-favorite-off' :'button-favorite-on' }
+        onClick={showFavorites}>{ showFavoritesContainer ? 'Quit Favorites' : 'Show Favorites'}
+      </button>
+      {
+        showFavoritesContainer? <Favorites />: null
+      }
       <ul>
         {
           state?.map(poke => {

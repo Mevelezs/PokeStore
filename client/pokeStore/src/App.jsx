@@ -1,14 +1,14 @@
 import './App.css'
 import { Carts } from './components/carts/carts'
 import { Detail } from './components/detail/Detail'
-import {Routes, Route, Router} from 'react-router-dom'
-import { Favorites } from './components/favorites/Favorites'
+import { Routes, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 
 function App() {
   return (
     <main className='mainApp'>
-      <h1>Poke Store</h1>
-        <Favorites />
+      <Link to='/'><h1>Poke Store</h1></Link>
         <Routes>
           <Route path='/' element={<Carts />} /> 
           <Route path='detail/:id' element={<Detail />} /> 
