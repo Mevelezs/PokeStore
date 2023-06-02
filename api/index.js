@@ -12,10 +12,11 @@ app.use(morgan('dev'));
 const port = process.env.PORT || 3000;
 const host = process.env.HOST;
 // console.log(corsOptions);
+routerApi(app);
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('My app');
 }).listen(port, host, () => console.log('listen to port 3000'));
 
-routerApi(app);
-app.use(cors());
