@@ -1,7 +1,15 @@
-require('dotenv').config();
+// require('dotenv').config();
 
-const config = {
-  Url: process.env.URI,
-};
+// const {
+//   DB_USER,
+//   DB_PASSWORD,
+//   DB_HOST,
+//   DB_NAME,
+//   DB_PORT,
+// } = process.env;
 
-module.exports = config;
+
+//  const Url = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+
+
+// module.exports = Url;
