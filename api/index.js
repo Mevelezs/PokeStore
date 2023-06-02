@@ -16,6 +16,6 @@ const host = process.env.HOST;
 app.get('/', (req, res) => {
   res.send('My app');
 }).listen(port, host, () => console.log('listen to port 3000'));
-app.use(cors(corsOptions));
+app.use(cors());
 
 routerApi(app);
