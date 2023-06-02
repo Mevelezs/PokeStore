@@ -3,7 +3,7 @@ require('dotenv').config();
 const cors = require('cors');
 const morgan = require('morgan');
 const routerApi = require('./Routs');
-const corsOptions = require('./auth/cors/cors');
+// const corsOptions = require('./auth/cors/cors');
 
 const app = express();
 app.use(express.json());
@@ -16,6 +16,6 @@ const host = process.env.HOST;
 app.get('/', (req, res) => {
   res.send('My app');
 }).listen(port, host, () => console.log('listen to port 3000'));
-app.use(cors());
 
 routerApi(app);
+app.use(cors());
