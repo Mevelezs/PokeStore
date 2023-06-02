@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const cors = require('cors');
 const morgan = require('morgan');
 const routerApi = require('./Routs');
@@ -8,12 +9,13 @@ const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
 
-const PORT = 3000;
+const port = process.env.PORT || 3000;
+const host = process.env.HOST;
 // console.log(corsOptions);
 
 app.get('/', (req, res) => {
   res.send('My app');
-}).listen(PORT, () => console.log('listen to port 3000'));
+}).listen(port, host, () => console.log('listen to port 3000'));
 app.use(cors(corsOptions));
 
 routerApi(app);
